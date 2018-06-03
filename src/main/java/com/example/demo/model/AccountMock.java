@@ -35,11 +35,6 @@ public class AccountMock {
         return accounts.get(id);
     }
 
-    public static Account update(Long id, Account account) {
-        accounts.put(id, account);
-        return account;
-    }
-
     public static Account delete(Long id) {
         return accounts.remove(id);
     }

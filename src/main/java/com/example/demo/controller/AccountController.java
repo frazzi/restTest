@@ -15,6 +15,10 @@ public class AccountController {
     @Autowired
     private AccountRepository accountRepository;
 
+    public AccountController(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
+
     @RequestMapping(value = "json", method = RequestMethod.GET)
     public List<Account> listAccounts() {
         return accountRepository.findAll();
@@ -25,7 +29,7 @@ public class AccountController {
     public MyResponse addAccount(@RequestBody Account account) {
         MyResponse response= null;
         if (account != null) {
-            Account user = accountRepository.save(account);
+            accountRepository.save(account);
             response = new MyResponse("account has been successfully added");
         }
 
